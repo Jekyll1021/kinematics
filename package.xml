@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>kinematics</name>
+  <version>0.0.1</version>
+  <description>pyrobot kinematics package</description>
+
+  <maintainer email="pyrobot@todo.todo">PyRobot Team</maintainer>
+
+  <license>MIT</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>pybind11_catkin</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>trac_ik_lib</build_depend>
+  <build_depend>tf_conversions</build_depend>
+
+  <exec_depend>pybind11_catkin</exec_depend>
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>trac_ik_lib</exec_depend>
+  <exec_depend>tf_conversions</exec_depend>
+
+  <export>
+
+  </export>
+</package>
