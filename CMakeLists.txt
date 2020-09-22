@@ -6,6 +6,9 @@ find_package(catkin REQUIRED COMPONENTS
     rospy
     trac_ik_lib
     tf_conversions
+    moveit_ros_planning_interface
+    urdf
+    kdl_parser
 )
 
 find_package(orocos_kdl REQUIRED)
@@ -20,6 +23,7 @@ include_directories(${orocos_kdl_INCLUDE_DIRS})
 link_directories(${orocos_kdl_LIBRARY_DIRS})
 
 set(KDL_SOURCE_DIR "src/kinematics/kdl_pybind")
+set(TRAC_IK_SOURCE_DIR "src/kinematics/trac_ik_pybind")
 
 include_directories(${PROJECT_SOURCE_DIR}/include
                     ${catkin_INCLUDE_DIRS})
@@ -32,6 +36,9 @@ catkin_package(
                    rospy
                    trac_ik_lib
                    tf_conversions
+                   moveit_ros_planning_interface
+                   urdf
+                   kdl_parser
 )
 
 catkin_install_python(PROGRAMS src/kinematics.py
@@ -39,10 +46,12 @@ catkin_install_python(PROGRAMS src/kinematics.py
                       DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
 pybind_add_module(kdl_pybind MODULE "${KDL_SOURCE_DIR}/kdl_pybind.cpp")
+pybind_add_module(trac_ik_pybind MODULE "${TRAC_IK_SOURCE_DIR}/trac_ik_pybind.cpp")
 
 target_link_libraries(kdl_pybind PRIVATE ${catkin_LIBRARIES})
 
 install(TARGETS kdl_pybind
+                trac_ik_pybind
   LIBRARY DESTINATION ${PYTHON_INSTALL_DIR}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )

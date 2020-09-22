@@ -67,7 +67,7 @@ class Kinematics(object):
             len(pose) >= 7
             and len(tolerance) >= 6
             and len(init_joint_positions) == self.arm_dof
-        ), "Incorrect IK service request. Please fix it."
+        ), "Incorrect IK request. Please fix it."
 
         q_init = self.joints_to_kdl(init_joint_positions)
         p_in = Pose()
